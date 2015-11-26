@@ -3,10 +3,10 @@ var Schema   = mongoose.Schema;
 
 var BookingSchema = new Schema({
     attraction_id:  { type: mongoose.Schema.ObjectId, ref: 'Attraction' },
-    Date:           { type: Date },
+    date:           { type: Date },
     qnt_adult:      { type: String},
     qnt_child:      { type: String},
-    price:          { type: Number}
+    total:          { type: Number}
 });
 
 

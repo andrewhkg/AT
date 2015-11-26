@@ -25,7 +25,7 @@ router.get('/bookings', function (req, res){
     } else {
       res.json({bookings: bookings});
     }
-  });
+  }).populate("attraction_id");
 })
 
 //SHOW

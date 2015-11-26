@@ -14,7 +14,7 @@
 
       var html  = '<div class="col-sm-6">'
           html +=   '<a href="/attractions/' + attraction._id + '">';
-          html +=     '<p data-id="' + attraction._id + '"">' + '<h4>' +attraction.name + '</h4>'+ '</p>';
+          html +=     '<p data-id="' + attraction._id + '"">' + '<h4 class = "attr-name">' +attraction.name + '</h4>'+ '</p>';
           html +=     '<img class="responsive-image img-rounded" src="http://' + window.location.host + '/img/attractions/' + attraction.picture + ' ">';
           html +=     '<p>' + attraction.description + '</p>';
           html +=   '</a>';

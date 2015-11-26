@@ -23,10 +23,11 @@ var API_WRAPPER = function () {
   };
 
 
-  this.getBookings = function () {
+  this.createBookings = function (params) {
     return $.ajax({
       url: this.URL_BASE + "/api/bookings",
-      method: "GET"
+      method: "POST",
+      data: params
     });
   };
 
@@ -37,20 +38,12 @@ var API_WRAPPER = function () {
     });
   };
 
-  // this.postAuth = function () {
-  //   return $.ajax({
-  //     url: this.URL_BASE + "/auth/signin",
-  //     method: "POST",
-  //     data:
-  //   });
-  // };
-
-  // this.postAuth = function () {
-  //   return $.ajax({
-  //     url: this.URL_BASE + "/auth/signup",
-  //     method: "POST"
-  //   });
-  // };
+  this.getBookings = function() {
+    return $.ajax ({
+      url: this.URL_BASE + "/api/bookings",
+      method: "GET"
+    });
+  };
 
 };
 

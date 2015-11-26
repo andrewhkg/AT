@@ -5,26 +5,33 @@
   </div>
   <p id='book' align="center"><a href="/booking/new" class="btn btn-danger" role="button">BOOK</a></p>
 </div>
+
 <script type="text/javascript">
   // javascript
   var id = window.location.pathname.split("/")[2];
 
+
   console.log("the ID is" + id);
 
   function success (attraction){
-      console.log(attraction);
-      console.log(attraction.name, attraction.picture, attraction.description);
+    var newUrl = "/bookings/new?attraction_id=" + id +
+                               "&price_adult=" + attraction.price_adult +
+                               "&price_child=" + attraction.price_child;
+    $('#book > a').attr("href", newUrl);
 
-      var html  = '<div class="col-sm-6">'
-          html +=  '<p>' + attraction.name + '</p>';
-          html +=  '<img class="responsive-image img-rounded" src="http://' + window.location.host + '/img/attractions/' + attraction.picture + ' ">';
-          html +=  '<p>' + attraction.description + '</p>';
-          html += '</div>';
+    console.log(attraction);
+    console.log(attraction.name, attraction.picture, attraction.description);
 
-      $(".container").append(html);
-    }
+    var html  = '<div class="col-sm-6">'
+        html +=  '<p>' + attraction.name + '</p>';
+        html +=  '<img class="responsive-image img-rounded" src="http://' + window.location.host + '/img/attractions/' + attraction.picture + ' ">';
+        html +=  '<p>' + attraction.description + '</p>';
+        html += '</div>';
 
-  API.getOneAttraction(id).then( success, errorHandling);
+    $(".container").append(html);
+  }
+
+  API.getOneAttraction(id).then(success, errorHandling);
 
 </script>
 

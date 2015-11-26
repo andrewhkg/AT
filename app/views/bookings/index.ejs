@@ -1,0 +1,26 @@
+<h1 align="center">My Bookings</h1>
+<div class="container">
+  <div class="row" id='attractions'>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+API.getBookings().then( function(data){
+  console.log(data);
+  // {
+  //   bookings: [array]
+  // }
+  data.bookings.forEach( function (booking) {
+    console.log(booking);
+    // var html = '<div class="col-sm-6">'
+     var html =  booking.name + '<br>' + booking.date + '<br>' +booking.total;
+        // html += '</div>';
+
+  $(".container").append(html);
+  })
+
+}, errorHandling);
+
+</script>
+

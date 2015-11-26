@@ -28,11 +28,13 @@ router.get('/attractions/:id', function (req, res, next) {
   res.render('attraction/show');
 });
 
-router.get('/booking/new', authenticatedUser, function (req, res, next) {
-  res.render('booking/new');
+router.get('/bookings/new', authenticatedUser, function (req, res, next) {
+  res.render('bookings/new');
 });
 
-router.get('/booking/index', authenticatedUser, function (req, res, next) {
-  res.render('booking/index');
+router.get('/bookings/index', authenticatedUser, function (req, res, next) {
+  res.render('bookings/index');
 });
+
+
 

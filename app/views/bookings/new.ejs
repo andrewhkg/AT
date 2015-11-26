@@ -1,0 +1,58 @@
+<h1>Booking Form</h1>
+<div class="container"></div>
+
+
+<form action="/bookings" method="post">
+  <div class="form-group">
+  <p>Adults qnt:</p><input type="number" id="qnt_adult" value="0"><br><br>
+  <p>Child qnt:</p><input type="number" id="qnt_child" value="0"><br><br>
+  <p>Total price: <span id="total"></span>HKD</p><br>
+  <p>Date: <input type="text" id="datepicker"></p>
+  <input class="btn btn-default subm" id="btn_subm" type="submit">
+
+  </div>
+</form>
+
+
+<script type="text/javascript">
+  $('#qnt_adult, #qnt_child').on('keyup', function(e){
+    var price_child = 100;
+    var price_adult = 200;
+
+    var total = $('#qnt_adult').val() * price_adult + $('#qnt_child').val() * price_child;
+    $('#total').html(total);
+  });
+
+  $("#btn_subm").on("click", function(e) {
+    e.preventDefault();
+
+    var params = window.location.search.split("?")[1].split('&');
+    var attraction_id = params[0].split('=')[1];
+    var price_adult = parseInt(params[1].split('=')[1]);
+    var price_child = parseInt(params[2].split('=')[1]);
+
+    var params = {
+      booking: {
+        date:          $('#datepicker').datepicker("getDate"),
+        attraction_id: params[0].split('=')[1],
+        qnt_adult:     $('#qnt_adult').val(),
+        qnt_child:     $('#qnt_child').val(),
+      }
+    }
+
+    // total: (qnt_child * price_child) + (qnt_adult * price_adult)
+
+    console.log('params:', params);
+
+    // API.createBookings(params).then( function (data){
+    //   console.log(data);
+    //   window.location.href = "/bookings/index"
+    // }, errorHandling);
+  })
+</script>
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+</script>
+
