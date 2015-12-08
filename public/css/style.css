@@ -36,3 +36,8 @@ h3, h4 {
 .attr-name {
   text-align: center;
 }
+
+.breadcrumb {
+  background-color: white;
+
+}
